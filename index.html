@@ -4,17 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Web Page</title>
+    <title>Modern Web Page</title>
     style.css
 </head>
 <body>
 
-    <h1>Hello from HTML, CSS & JavaScript!</h1>
+    <div class="container">
+        <h1>Welcome to My Stylish Web Page</h1>
+        <p>This page is built using HTML, CSS & JavaScript.</p>
 
-    <button onclick="changeText()">Click Me</button>
+        <button onclick="changeText()" class="btn">Click Me</button>
 
-    <p id="output">This text will change when the button is clicked.</p>
+        <p id="output" class="output">Click the button to see magic ✨</p>
+    </div>
 
     script.js</script>
-</body>
-</html>
+</ 🎨 **style.css**
+```css
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+.container {
+    background: white;
+    color: #333;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 350px;
+    animation: fadeIn 1s ease-out;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+.btn {
+    background: #2575fc;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background: #1a5bd1;
+}
+
+.output {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Smooth fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+``
+

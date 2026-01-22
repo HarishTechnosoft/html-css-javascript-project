@@ -2,79 +2,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Web Page</title>
-    style.css
-</head>
-<body>
-
-    <div class="container">
-        <h1>Welcome to My Stylish Web Page</h1>
-        <p>This page is built using HTML, CSS & JavaScript.</p>
-
-        <button onclick="changeText()" class="btn">Click Me</button>
-
-        <p id="output" class="output">Click the button to see magic ✨</p>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Simple Website</title>
+  <meta name="description" content="A simple responsive website using HTML, CSS, and JavaScript." />
+  <link rel="stylesheet" href="!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      #MySite</a>
+      <nav class="nav" id="nav">
+        <a href="#/a>
+        #featuresFeatures</a>
+        #aboutAbout</a>
+        #contactContact</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        ☰
+      </button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
     </div>
+  </header>
 
-    script.js</script>
-</ 🎨 **style.css**
-```css
-body {
-    margin: 0;
-    padding: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff;
-}
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="container hero-inner">
+      <h1>Build fast, simple sites</h1>
+      <p>Minimal HTML, modern CSS, and a sprinkle of JavaScript—ready to customize.</p>
+      <div class="cta-group">
+        #featuresExplore Features</a>
+        #contactGet in Touch</a>
+      </div>
+    </div>
+  </section>
 
-.container {
-    background: white;
-    color: #333;
-    padding: 30px 40px;
-    border-radius: 12px;
-    box-shadow: 0px 8px 25px rgba(0,0,0,0.2);
-    text-align: center;
-    width: 350px;
-    animation: fadeIn 1s ease-out;
-}
+  <!-- Features -->
+  <section id="features" class="section">
+    <div class="container">
+      <h2 class="section-title">Features</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Responsive</h3>
+          <p>Looks good on mobile, tablet, and desktop with simple grid layout.</p>
+        </article>
+        <article class="card">
+          <h3>Accessible</h3>
+          <p>Semantic HTML, alt text, focus styles, and aria attributes.</p>
+        </article>
+        <article class="card">
+          <h3>Fast</h3>
+          <p>No frameworks needed. Clean, fast-loading pages.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-h1 {
-    margin-bottom: 10px;
-}
+  <!-- About -->
+  <section id="about" class="section alt">
+    <div class="container">
+      <h2 class="section-title">About</h2>
+      <p>
+        This starter is perfect for landing pages, portfolios, or small product sites.
+        Extend it with more sections, images, and CSS utilities.
+      </p>
+    </div>
+  </section>
 
-.btn {
-    background: #2575fc;
-    border: none;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 15px;
-    transition: transform 0.2s, background 0.3s;
-}
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <form id="contactForm" class="form" novalidate>
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+          <small class="error" data-error-for="name"></small>
+        </div>
 
-.btn:hover {
-    transform: scale(1.05);
-    background: #1a5bd1;
-}
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          <small class="error" data-error-for="email"></small>
+        </div>
 
-.output {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-}
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="How can we help?" required></textarea>
+          <small class="error" data-error-for="message"></small>
+        </div>
 
-/* Smooth fade animation */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-``
+        <button class="btn primary" type="submit">Send Message</button>
+        <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
 
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> MySite. All rights reserved.</p>
+      <div class="socials">
+        #Twitter</a>
+        #GitHub</a>
+        #LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.jsody>
+</html>

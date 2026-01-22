@@ -1,62 +1,57 @@
+const KEY = "3fd2be6f0c70a2a598f084ddfb75487c";
+// For educational purposes only - DO NOT USE in production
+// Request your own key for free: https://developers.themoviedb.org/3
+const API_URL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${KEY}&page=1`;
+const IMG_PATH = "https://image.tmdb.org/t/p/w1280";
+const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&query=`;
 
-// Mobile nav
-const hamburger = document.getElementById('hamburger');
-const nav = document.getElementById('nav');
-hamburger.addEventListener('click', () => {
-  const open = nav.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', String(open));
-});
+const main = document.getElementById("main");
+const form = document.getElementById("form");
+const search = document.getElementById("search");
 
-// Dark mode (persisted)
-const themeToggle = document.getElementById('themeToggle');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-const savedTheme = localStorage.getItem('theme');
-function applyTheme(mode) {
-  document.documentElement.classList.toggle('dark', mode === 'dark');
-  themeToggle.textContent = mode === 'dark' ? '☀️' : '🌙';
-}
-applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
-themeToggle.addEventListener('click', () => {
-  const isDark = document.documentElement.classList.toggle('dark');
-  const mode = isDark ? 'dark' : 'light';
-  localStorage.setItem('theme', mode);
-  themeToggle.textContent = isDark ? '☀️' : '🌙';
-});
+const getClassByRate = (vote) => {
+  if (vote >= 7.5) return "green";
+  else if (vote >= 7) return "orange";
+  else return "red";
+};
 
-// Footer year
-document.getElementById('year').textContent = new Date().getFullYear();
+const showMovies = (movies) => {
+  main.innerHTML = "";
+  movies.forEach((movie) => {
+    const { title, poster_path, vote_average, overview } = movie;
+    const movieElement = document.createElement("div");
+    movieElement.classList.add("movie");
+    movieElement.innerHTML = `
+    <img
+      src="${IMG_PATH + poster_path}"
+      alt="${title}"
+    />
+    <div class="movie-info">
+      <h3>${title}</h3>
+      <span class="${getClassByRate(vote_average)}">${vote_average}</span>
+    </div>
+    <div class="overview">
+      <h3>Overview</h3>
+      ${overview}
+    </div>
+  `;
+    main.appendChild(movieElement);
+  });
+};
 
-// Simple form validation + mock submit
-const form = document.getElementById('contactForm');
-const statusEl = document.getElementById('formStatus');
+const getMovies = async (url) => {
+  const res = await fetch(url);
+  const data = await res.json();
+  showMovies(data.results);
+};
 
-function setError(id, message) {
-  const small = document.querySelector(`[data-error-for="${id}"]`);
-  if (small) small.textContent = message || '';
-}
+getMovies(API_URL);
 
-form.addEventListener('submit', (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-  let ok = true;
-
-  const name = form.name.value.trim();
-  const email = form.email.value.trim();
-  const message = form.message.value.trim();
-
-  // Reset errors
-  ['name', 'email', 'message'].forEach(id => setError(id, ''));
-
-  if (!name) { setError('name', 'Please enter your name.'); ok = false; }
-  if (!email || !/^\S+@\S+\.\S+$/.test(email)) { setError('email', 'Enter a valid email.'); ok = false; }
-  if (message.length < 5) { setError('message', 'Message is too short.'); ok = false; }
-
-  if (!ok) return;
-
-  statusEl.textContent = 'Sending...';
-  // Mock async "send"
-  setTimeout(() => {
-    statusEl.textContent = 'Thanks! Your message has been sent.';
-    form.reset();
-  }, 800);
+  const searchTerm = search.value;
+  if (searchTerm && searchTerm !== "") {
+    getMovies(SEARCH_API + searchTerm);
+    search.value = "";
+  } else history.go(0);
 });
-``
